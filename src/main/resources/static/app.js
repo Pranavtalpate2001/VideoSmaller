@@ -60,8 +60,9 @@ function uploadVideo() {
     formData.append("file", file);
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://videosmaller.onrender.com", true);
+    xhr.open("POST", "https://videosmaller.onrender.com/compress", true);
 
+    // Progress bar update
     xhr.upload.onprogress = function(event) {
         if(event.lengthComputable) {
             let percent = Math.round((event.loaded / event.total) * 100);
