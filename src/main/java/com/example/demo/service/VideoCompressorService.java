@@ -10,8 +10,7 @@ import java.io.InputStreamReader;
 public class VideoCompressorService {
 
     // Windows absolute path to FFmpeg
-    private final String ffmpegCmd = "C:\\Users\\Madhuri\\Downloads\\ffmpeg-2025-09-08-git-45db6945e9-essentials_build\\ffmpeg-2025-09-08-git-45db6945e9-essentials_build\\bin\\ffmpeg.exe";
-
+  private final String ffmpegCmd = "ffmpeg";
     public String compressVideo(String inputPath, String outputPath) {
         try {
             File in = new File(inputPath);
