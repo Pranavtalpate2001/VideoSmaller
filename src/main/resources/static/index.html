@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Compressor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>🎬 Video Compressor</h1>
+
+    <label class="upload-box" id="uploadBox">
+        <input type="file" id="videoFile" accept="video/*">
+        <span id="fileName">📂 Click or Drag & Drop Video</span>
+    </label>
+
+    <button class="btn" onclick="uploadVideo()">Compress Video</button>
+
+    <div class="progress-container" id="progressBox">
+        <progress id="progressBar" value="0" max="100"></progress>
+        <p id="progressText">0%</p>
+    </div>
+
+    <div class="result" id="resultBox" style="display:none;">
+        <div>
+            <p>Original: <span id="originalSize">0</span> MB</p>
+            <p>Compressed: <span id="compressedSize">0</span> MB</p>
+        </div>
+        <div class="reduction" id="reductionPercent">-0%</div>
+    </div>
+
+    <button class="btn" id="downloadBtn" style="display:none;">Download Compressed Video</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
