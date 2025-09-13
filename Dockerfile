@@ -1,22 +1,22 @@
-# Use OpenJDK 21 base image
-FROM openjdk:21-jdk-slim
+# Use official OpenJDK 21
+FROM eclipse-temurin:21-jdk-alpine
 
 # Install ffmpeg
-RUN apt-get update && apt-get install -y ffmpeg && apt-get clean
+RUN apk add --no-cache ffmpeg
 
 # Set working directory
 WORKDIR /app
 
-# Copy pom.xml and source code
-COPY pom.xml .
-COPY src ./src
+# Copy Maven project
+COPY pom.xml mvnw ./
+COPY .mvn .mvn
+COPY src src
 
-# Build the project
-RUN apt-get update && apt-get install -y maven && mvn clean package -DskipTests
+# Package application using Maven wrapper
+RUN ./mvnw clean package -DskipTests
 
-# Expose port (Render uses PORT env)
-ENV PORT 8080
+# Expose port (Render sets PORT environment variable)
 EXPOSE 8080
 
-# Set the startup command
-CMD ["java", "-jar", "target/VideoCompreesed-2-0.0.1-SNAPSHOT.jar"]
+# Run Spring Boot app
+ENTRYPOINT ["java","-jar","target/VideoCompreesed-2-0.0.1-SNAPSHOT.jar"]
