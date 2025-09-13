@@ -60,7 +60,7 @@ function uploadVideo() {
     formData.append("file", file);
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:8080/compress", true);
+    xhr.open("POST", "https://videosmaller.onrender.com", true);
 
     xhr.upload.onprogress = function(event) {
         if(event.lengthComputable) {
